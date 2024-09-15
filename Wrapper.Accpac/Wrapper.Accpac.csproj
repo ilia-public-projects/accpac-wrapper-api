@@ -1,0 +1,83 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <COMReference Include="ACCPACXAPILib">
+      <VersionMinor>1</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>975d7ac5-8871-11d1-b5a5-0060083b07c8</Guid>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AccpacCOMAPI">
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>4e5368a1-a652-11d2-9b94-00104b71eb3f</Guid>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wrapper.Common\Wrapper.Common.csproj" />
+    <ProjectReference Include="..\Wrapper.Models\Wrapper.Models.csproj" />
+    <ProjectReference Include="..\Wrapper.Services\Wrapper.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ACCPAC.Advantage">
+      <HintPath>accpacDlls\ACCPAC.Advantage.dll</HintPath>
+    </Reference>
+    <Reference Include="ACCPAC.Advantage.COMSVR.Interop">
+      <HintPath>accpacDlls\ACCPAC.Advantage.COMSVR.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="ACCPAC.Advantage.Server">
+      <HintPath>accpacDlls\ACCPAC.Advantage.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="ACCPAC.Advantage.Server.RemotingManager">
+      <HintPath>accpacDlls\ACCPAC.Advantage.Server.RemotingManager.dll</HintPath>
+    </Reference>
+    <Reference Include="ACCPAC.Advantage.Types">
+      <HintPath>accpacDlls\ACCPAC.Advantage.Types.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="accpacDlls\A4WCOM.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="accpacDlls\a4wcomex.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="accpacDlls\ACCPAC.Advantage.COMSVR.Interop.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="accpacDlls\ACCPAC.Advantage.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="accpacDlls\ACCPAC.Advantage.Server.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="accpacDlls\ACCPAC.Advantage.Server.RemotingManager.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="accpacDlls\ACCPAC.Advantage.Types.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
