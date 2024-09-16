@@ -15,21 +15,10 @@ namespace Wrapper.Accpac.BatchInsertTemplate
     /// <typeparam name="HeaderModel">Represents the model for the batch headers.</typeparam>
     public abstract class BatchInsertProcessor<HeaderModel> where HeaderModel : class
     {
-        // Private logger to log any errors or exceptions
         private readonly ILogger logger;
-
-        // Messenger service to notify about the progress of the batch processing
         private readonly INotificationMessenger notificationMessenger;
-
-        // Type of long-running process, used to notify the correct process type in the progress
         private LongRunningProcessType processType;
 
-        /// <summary>
-        /// Constructor to initialize the BatchInsertProcessor with required dependencies.
-        /// </summary>
-        /// <param name="logger">Logger used for logging errors or progress.</param>
-        /// <param name="notificationMessenger">Messenger service used for notifying progress.</param>
-        /// <param name="processType">Type of the long-running process (e.g., AP Invoice Batch).</param>
         protected BatchInsertProcessor(
             ILogger logger,
             INotificationMessenger notificationMessenger,
@@ -96,13 +85,11 @@ namespace Wrapper.Accpac.BatchInsertTemplate
         /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task InsertAsync(IOperationContext context, IBatchModel<HeaderModel> batchModel)
         {
-            // Validate the batch before processing
+
             await ValidateBatchAsync(context, batchModel);
 
-            // Get the total number of headers in the batch to track progress
             int totalEntries = batchModel.Headers.Count;
 
-            // Begin a database transaction
             BeginTransaction(context);
 
             try
@@ -122,15 +109,13 @@ namespace Wrapper.Accpac.BatchInsertTemplate
                 // Perform the actual batch insert operation
                 await PerformBatchInsertAsync(context, batchModel, trigger);
 
-                // Commit the transaction upon success
                 EndTransaction(context);
             }
             catch (Exception ex)
             {
-                // Rollback the transaction if an exception occurs
+
                 EndTransaction(context);
 
-                // Log the error and rethrow the exception with additional context
                 ErrorUtils.LogAndThrowAccpacException(context, logger, $"Failed to create batch ({processType})",
                     unhandledExceptionAction: () => throw new CreateEntityException(ex.Message, ex.InnerException));
             }
