@@ -1,5 +1,6 @@
 ﻿using AccpacCOMAPI;
 using Wrapper.Models.Accpac;
+using Wrapper.Services.Accpac;
 
 namespace Wrapper.Services
 {
@@ -23,7 +24,7 @@ namespace Wrapper.Services
         /// <summary>
         /// Gets the Accpac database link object, used for interacting with the Accpac database.
         /// </summary>
-        AccpacDBLink AccpacDBLink { get; }
+        IAccpacDbLinkWrapper AccpacDBLink { get; }
 
         /// <summary>
         /// Gets the default settings for the Accpac session module, including program name and start view.

@@ -45,7 +45,7 @@ namespace Wrapper.Services.Utils
         /// <exception cref="AccpacException">Thrown when Accpac errors are present.</exception>
         public static void LogAndThrowAccpacException(IOperationContext context, ILogger logger, string message, Action unhandledExceptionAction)
         {
-            if (context.AccpacSession.Errors != null && context.AccpacSession.Errors.Count > 0)
+            if (context.AccpacSession?.Errors != null && context.AccpacSession.Errors.Count > 0)
             {
                 List<string> errors = new List<string>();
                 for (int i = 0; i < context.AccpacSession.Errors.Count; i++)

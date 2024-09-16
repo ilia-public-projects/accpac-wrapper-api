@@ -1,5 +1,6 @@
 ﻿using AccpacCOMAPI;
 using Microsoft.AspNetCore.Http.Extensions;
+using Wrapper.Accpac;
 using Wrapper.Models.Accpac;
 using Wrapper.Services;
 using Wrapper.Services.Accpac;
@@ -54,7 +55,7 @@ namespace Wrapper.API.Services
 
             public string OperationId => contextId;
 
-            public AccpacDBLink AccpacDBLink { get; }
+            public IAccpacDbLinkWrapper AccpacDBLink { get; }
 
             public Guid UserId => userId;
 
@@ -63,7 +64,7 @@ namespace Wrapper.API.Services
             public AccpacOperationContext(HttpRequest request, AccpacSession session, AccpacDBLink accpacDBLink, AccpacSessionModuleDefault sessionModuleDefault)
             {
                 AccpacSession = session;
-                AccpacDBLink = accpacDBLink;
+                AccpacDBLink = new AccpacDbLinkWrapper(accpacDBLink);
                 AccpacSessionModuleDefault = sessionModuleDefault;
 
                 userId = request.GetUserIdFromRequest();
@@ -99,7 +100,7 @@ namespace Wrapper.API.Services
 
             public AccpacSession AccpacSession => throw new NotImplementedException();
 
-            public AccpacDBLink AccpacDBLink => throw new NotImplementedException();
+            public IAccpacDbLinkWrapper AccpacDBLink => throw new NotImplementedException();
 
             public AccpacSessionModuleDefault AccpacSessionModuleDefault => throw new NotImplementedException();
 
