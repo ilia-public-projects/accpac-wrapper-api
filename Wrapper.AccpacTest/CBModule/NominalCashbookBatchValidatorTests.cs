@@ -1,19 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wrapper.Models.Accpac.CashbookModels.CashbookBatchModels.NominalCashbookBatchModels;
+using Wrapper.Accpac.CashbookModule.NominalCashbookBatchServices;
 using Wrapper.Models.Accpac.CashbookModels.CashbookBatchModels;
+using Wrapper.Models.Accpac.CashbookModels.CashbookBatchModels.NominalCashbookBatchModels;
+using Wrapper.Models.Common;
+using Wrapper.Models.Common.Exceptions;
+using Wrapper.Services;
 using Wrapper.Services.Accpac.CashbookModule;
 using Wrapper.Services.Accpac.CommonServicesModule;
 using Wrapper.Services.Accpac.GLModule.GLSetupServices;
-using Wrapper.Services;
-using Wrapper.Models.Common;
-using Wrapper.Accpac.CashbookModule.NominalCashbookBatch;
-using Wrapper.Models.Common.Exceptions;
 
 namespace Wrapper.AccpacTest.CBModule
 {
@@ -45,20 +40,20 @@ namespace Wrapper.AccpacTest.CBModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new NominalCashbookBatchEntryModel
+            var model = new NominalCashbookBatch
             {
                 BankCode = "ValidBank",
-                Headers = new List<CashbookBatchHeaderEntryModel>
+                Headers = new List<CashbookBatchHeader>
                 {
-                    new CashbookBatchHeaderEntryModel
+                    new CashbookBatchHeader
                     {
                         Currency = "USD",
                         ExchangeRate = 1.0m,
                         EntryDate = DateTime.UtcNow,
                         ReferenceNo = "Ref001",
-                        Details = new List<CashbookBatchEntryDetailModel>
+                        Details = new List<CashbookBatchDetail>
                         {
-                            new CashbookBatchEntryDetailModel
+                            new CashbookBatchDetail
                             {
                                 SourceCode = "Src001",
                                 AccountCode = "Acc001",
@@ -92,20 +87,20 @@ namespace Wrapper.AccpacTest.CBModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new NominalCashbookBatchEntryModel
+            var model = new NominalCashbookBatch
             {
                 BankCode = "InvalidBank",
-                Headers = new List<CashbookBatchHeaderEntryModel>
+                Headers = new List<CashbookBatchHeader>
                 {
-                    new CashbookBatchHeaderEntryModel
+                    new CashbookBatchHeader
                     {
                         Currency = "USD",
                         ExchangeRate = 1.0m,
                         EntryDate = DateTime.UtcNow,
                         ReferenceNo = "Ref001",
-                        Details = new List<CashbookBatchEntryDetailModel>
+                        Details = new List<CashbookBatchDetail>
                         {
-                            new CashbookBatchEntryDetailModel
+                            new CashbookBatchDetail
                             {
                                 SourceCode = "Src001",
                                 AccountCode = "Acc001",
@@ -133,10 +128,10 @@ namespace Wrapper.AccpacTest.CBModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new NominalCashbookBatchEntryModel
+            var model = new NominalCashbookBatch
             {
                 BankCode = "ValidBank",
-                Headers = new List<CashbookBatchHeaderEntryModel>()
+                Headers = new List<CashbookBatchHeader>()
             };
 
             // Act
@@ -152,18 +147,18 @@ namespace Wrapper.AccpacTest.CBModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new NominalCashbookBatchEntryModel
+            var model = new NominalCashbookBatch
             {
                 BankCode = "ValidBank",
-                Headers = new List<CashbookBatchHeaderEntryModel>
+                Headers = new List<CashbookBatchHeader>
                 {
-                    new CashbookBatchHeaderEntryModel
+                    new CashbookBatchHeader
                     {
                         Currency = "USD",
                         ExchangeRate = 1.0m,
                         EntryDate = DateTime.UtcNow,
                         ReferenceNo = "Ref001",
-                        Details = new List<CashbookBatchEntryDetailModel>()
+                        Details = new List<CashbookBatchDetail>()
                     }
                 }
             };
@@ -181,20 +176,20 @@ namespace Wrapper.AccpacTest.CBModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new NominalCashbookBatchEntryModel
+            var model = new NominalCashbookBatch
             {
                 BankCode = "ValidBank",
-                Headers = new List<CashbookBatchHeaderEntryModel>
+                Headers = new List<CashbookBatchHeader>
                 {
-                    new CashbookBatchHeaderEntryModel
+                    new CashbookBatchHeader
                     {
                         Currency = "InvalidCurrency",
                         ExchangeRate = 1.0m,
                         EntryDate = DateTime.UtcNow,
                         ReferenceNo = "Ref001",
-                        Details = new List<CashbookBatchEntryDetailModel>
+                        Details = new List<CashbookBatchDetail>
                         {
-                            new CashbookBatchEntryDetailModel
+                            new CashbookBatchDetail
                             {
                                 SourceCode = "Src001",
                                 AccountCode = "Acc001",
@@ -222,20 +217,20 @@ namespace Wrapper.AccpacTest.CBModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new NominalCashbookBatchEntryModel
+            var model = new NominalCashbookBatch
             {
                 BankCode = "ValidBank",
-                Headers = new List<CashbookBatchHeaderEntryModel>
+                Headers = new List<CashbookBatchHeader>
                 {
-                    new CashbookBatchHeaderEntryModel
+                    new CashbookBatchHeader
                     {
                         Currency = "USD",
                         ExchangeRate = -1.0m, // Invalid exchange rate
                         EntryDate = DateTime.UtcNow,
                         ReferenceNo = "Ref001",
-                        Details = new List<CashbookBatchEntryDetailModel>
+                        Details = new List<CashbookBatchDetail>
                         {
-                            new CashbookBatchEntryDetailModel
+                            new CashbookBatchDetail
                             {
                                 SourceCode = "Src001",
                                 AccountCode = "Acc001",
@@ -260,20 +255,20 @@ namespace Wrapper.AccpacTest.CBModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new NominalCashbookBatchEntryModel
+            var model = new NominalCashbookBatch
             {
                 BankCode = "ValidBank",
-                Headers = new List<CashbookBatchHeaderEntryModel>
+                Headers = new List<CashbookBatchHeader>
                 {
-                    new CashbookBatchHeaderEntryModel
+                    new CashbookBatchHeader
                     {
                         Currency = "USD",
                         ExchangeRate = 1.0m,
                         EntryDate = DateTime.UtcNow,
                         ReferenceNo = "Ref001",
-                        Details = new List<CashbookBatchEntryDetailModel>
+                        Details = new List<CashbookBatchDetail>
                         {
-                            new CashbookBatchEntryDetailModel
+                            new CashbookBatchDetail
                             {
                                 SourceCode = "InvalidSourceCode",
                                 AccountCode = "Acc001",

@@ -7,7 +7,6 @@ using Wrapper.API.Extensions;
 using Wrapper.Models.Accpac.APModels.ApInvoiceBatchModels;
 using Wrapper.RequestFilters;
 using Wrapper.Services;
-using Wrapper.Services.Accpac.APModule;
 using Wrapper.Services.Accpac.APModule.APInvoiceBatchServices;
 
 namespace Wrapper.API.Controllers
@@ -45,7 +44,7 @@ namespace Wrapper.API.Controllers
         public async Task<APIResponse<PostCreateAPInvoiceBatchResponse>> CreateInvoiceBatch([FromBody] PostCreateAPInvoiceBatchRequest request)
         {
             IOperationContext context = HttpContext.GetOperationContext();
-            ApInvoiceBatchEntryModel model = mapper.Map<ApInvoiceBatchEntryModel>(request);
+            ApInvoiceBatch model = mapper.Map<ApInvoiceBatch>(request);
             await apInvoiceBatchEditor.CreateBatchAsync(context, model);
             return new APIResponse<PostCreateAPInvoiceBatchResponse>(new PostCreateAPInvoiceBatchResponse());
         }

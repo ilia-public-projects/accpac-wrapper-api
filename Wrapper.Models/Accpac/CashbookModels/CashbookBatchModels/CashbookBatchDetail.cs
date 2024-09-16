@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a detailed entry for a cashbook batch, including source code, account details, and debit/credit amounts.
     /// </summary>
-    public class CashbookBatchEntryDetailModel
+    public class CashbookBatchDetail
     {
         /// <summary>
         /// Gets or sets the source code for the cashbook batch entry.

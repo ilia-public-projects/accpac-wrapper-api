@@ -10,9 +10,9 @@ namespace Wrapper.API.Mapping
         public APInvoiceBatchProfile()
         {
             CreateMap<ApInvoiceBatchIdentifier, ResponseApInvoiceBatchIdentifier>();
-            CreateMap<RequestApInvoiceBatchDetailEntryModel, ApInvoiceBatchDetailEntryModel>();
-            CreateMap<RequestApInvoiceBatchHeaderEntryModel, ApInvoiceBatchHeaderEntryModel>();
-            CreateMap<PostCreateAPInvoiceBatchRequest, ApInvoiceBatchEntryModel>();
+            CreateMap<RequestApInvoiceBatchDetailEntryModel, ApInvoiceBatchDetail>();
+            CreateMap<RequestApInvoiceBatchHeaderEntryModel, ApInvoiceBatchHeader>();
+            CreateMap<PostCreateAPInvoiceBatchRequest, ApInvoiceBatch>();
         }
     }
 }

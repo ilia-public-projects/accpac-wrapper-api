@@ -12,13 +12,13 @@ namespace Wrapper.API.Mapping
     {
         public CashbookBatchProfile()
         {
-            CreateMap<PostCreateNominalCashbookBatchRequest, NominalCashbookBatchEntryModel>();
-            CreateMap<PostCreateCashbookBatchRequestBase,CashbookBatchEntryModel>();
-            CreateMap<PostCreateApCashbookBatchRequest, ApCashbookBatchEntryModel>();
+            CreateMap<PostCreateNominalCashbookBatchRequest, NominalCashbookBatch>();
+            CreateMap<PostCreateCashbookBatchRequestBase,CashbookBatchBase>();
+            CreateMap<PostCreateApCashbookBatchRequest, ApCashbookBatch>();
 
-            CreateMap<RequestApCashbookBatchHeader, ApCashbookBatchHeaderEntryModel>();
-            CreateMap<RequestCashbookBatchHeaderBase, CashbookBatchHeaderEntryModel>();
-            CreateMap<RequestCashbookBatchDetail, CashbookBatchEntryDetailModel>();
+            CreateMap<RequestApCashbookBatchHeader, ApCashbookBatchHeader>();
+            CreateMap<RequestCashbookBatchHeaderBase, CashbookBatchHeader>();
+            CreateMap<RequestCashbookBatchDetail, CashbookBatchDetail>();
 
             CreateMap<BankModel,ResponseBankModel>();
             CreateMap<CashbookBatchIdentifier, ResponseCashbookBatchIdentifier>();

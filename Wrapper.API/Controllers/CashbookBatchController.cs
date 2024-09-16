@@ -11,7 +11,7 @@ using Wrapper.RequestFilters;
 using Wrapper.Services;
 using Wrapper.Services.Accpac.CashbookModule;
 using Wrapper.Services.Accpac.CashbookModule.ApCashbookBatchServices;
-using Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatch;
+using Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatchServices;
 
 namespace Wrapper.API.Controllers
 {
@@ -48,7 +48,7 @@ namespace Wrapper.API.Controllers
         public async Task<APIResponse<PostCreateNominalCashbookBatchResponse>> CreateNominalBatch([FromBody] PostCreateNominalCashbookBatchRequest request)
         {
             IOperationContext context = HttpContext.GetOperationContext();
-            NominalCashbookBatchEntryModel model = mapper.Map<NominalCashbookBatchEntryModel>(request);
+            NominalCashbookBatch model = mapper.Map<NominalCashbookBatch>(request);
             await cashbookBatchEditor.CreateNominalCashbookBatchAsync(context, model);
             return new APIResponse<PostCreateNominalCashbookBatchResponse>(new PostCreateNominalCashbookBatchResponse());
         }
@@ -64,7 +64,7 @@ namespace Wrapper.API.Controllers
         public async Task<APIResponse<PostCreateApCashbookBatchResponse>> CreateApBatch([FromBody] PostCreateApCashbookBatchRequest request)
         {
             IOperationContext context = HttpContext.GetOperationContext();
-            ApCashbookBatchEntryModel model = mapper.Map<ApCashbookBatchEntryModel>(request);
+            ApCashbookBatch model = mapper.Map<ApCashbookBatch>(request);
             await apCashbookBatchEditor.CreateBatchAsync(context, model);
             return new APIResponse<PostCreateApCashbookBatchResponse>(new PostCreateApCashbookBatchResponse());
         }

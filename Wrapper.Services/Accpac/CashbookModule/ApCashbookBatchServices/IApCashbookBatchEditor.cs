@@ -4,6 +4,6 @@ namespace Wrapper.Services.Accpac.CashbookModule.ApCashbookBatchServices
 {
     public interface IApCashbookBatchEditor
     {
-        Task CreateBatchAsync(IOperationContext context, ApCashbookBatchEntryModel model);
+        Task CreateBatchAsync(IOperationContext context, ApCashbookBatch model);
     }
 }

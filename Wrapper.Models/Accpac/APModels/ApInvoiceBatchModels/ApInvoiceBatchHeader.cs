@@ -4,7 +4,7 @@
     /// Represents the header entry for an Accounts Payable (AP) invoice batch, 
     /// including vendor information, invoice details, and transaction type.
     /// </summary>
-    public class ApInvoiceBatchHeaderEntryModel
+    public class ApInvoiceBatchHeader
     {
         /// <summary>
         /// Gets or sets the vendor identifier for the AP invoice.
@@ -45,7 +45,7 @@
         /// <summary>
         /// Gets or sets the list of details associated with the AP invoice batch entry.
         /// </summary>
-        public List<ApInvoiceBatchDetailEntryModel> Details { get; set; }
+        public List<ApInvoiceBatchDetail> Details { get; set; }
     }
 
 }

@@ -4,11 +4,11 @@ using Microsoft.Extensions.Options;
 using Wrapper.Models.Accpac.APModels.ApInvoiceBatchModels;
 using Wrapper.Models.Common;
 using Wrapper.Services;
-using Wrapper.Services.Accpac.APModule;
+using Wrapper.Services.Accpac.APModule.APInvoiceBatchServices;
 
-namespace Wrapper.Accpac.APModule
+namespace Wrapper.Accpac.APModule.APInvoiceBatchServices
 {
-    public class ApInvoiceBatchLoader: IApInvoiceBatchLoader
+    public class ApInvoiceBatchLoader : IApInvoiceBatchLoader
     {
         private readonly ILogger<ApInvoiceBatchLoader> logger;
         private readonly IOptions<AppSettings> options;

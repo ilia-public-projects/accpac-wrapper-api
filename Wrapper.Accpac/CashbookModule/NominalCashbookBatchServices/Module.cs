@@ -1,12 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatch;
+using Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatchServices;
 
-namespace Wrapper.Accpac.CashbookModule.NominalCashbookBatch
+namespace Wrapper.Accpac.CashbookModule.NominalCashbookBatchServices
 {
     public static class Module
     {
@@ -14,6 +9,7 @@ namespace Wrapper.Accpac.CashbookModule.NominalCashbookBatch
         {
             services.AddSingleton<INominalCashbookBatchEditor, NominalCashbookBatchEditor>();
             services.AddSingleton<INominalCashbookBatchValidator, NominalCashbookBatchValidator>();
+            services.AddSingleton<NominalCashbookBatchInsertProcessor>();
         }
     }
 }

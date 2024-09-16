@@ -29,7 +29,7 @@ namespace Wrapper.Accpac.APModule.APInvoiceBatchServices
             this.optionalFieldValueLoader = optionalFieldValueLoader;
         }
 
-        public async Task ValidateCreateInvoiceBatchAsync(IOperationContext context, ApInvoiceBatchEntryModel model)
+        public async Task ValidateCreateInvoiceBatchAsync(IOperationContext context, ApInvoiceBatch model)
         {
             var validator = new Validator();
             if (model.Headers == null || !model.Headers.Any())
@@ -47,7 +47,7 @@ namespace Wrapper.Accpac.APModule.APInvoiceBatchServices
             await ValidateOptionalFieldsAsync(context, validator, model);
 
             int lineNo = 0;
-            foreach (ApInvoiceBatchHeaderEntryModel header in model.Headers)
+            foreach (ApInvoiceBatchHeader header in model.Headers)
             {
                 lineNo++;
 
@@ -66,7 +66,7 @@ namespace Wrapper.Accpac.APModule.APInvoiceBatchServices
                 }
 
                 int detailNo = 0;
-                foreach (ApInvoiceBatchDetailEntryModel detail in header.Details)
+                foreach (ApInvoiceBatchDetail detail in header.Details)
                 {
                     detailNo++;
 
@@ -84,7 +84,7 @@ namespace Wrapper.Accpac.APModule.APInvoiceBatchServices
 
         }
 
-        private async Task ValidateOptionalFieldsAsync(IOperationContext context, Validator validator, ApInvoiceBatchEntryModel model)
+        private async Task ValidateOptionalFieldsAsync(IOperationContext context, Validator validator, ApInvoiceBatch model)
         {
             IEnumerable<string> creditCodes = model.Headers.Select(x => x.CreditCode).Distinct().ToList();
             foreach (string creditCode in creditCodes)

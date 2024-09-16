@@ -3,11 +3,11 @@ using Wrapper.Models.Accpac.CashbookModels.CashbookBatchModels.NominalCashbookBa
 using Wrapper.Models.Common;
 using Wrapper.Services;
 using Wrapper.Services.Accpac.CashbookModule;
-using Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatch;
+using Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatchServices;
 using Wrapper.Services.Accpac.CommonServicesModule;
 using Wrapper.Services.Accpac.GLModule.GLSetupServices;
 
-namespace Wrapper.Accpac.CashbookModule.NominalCashbookBatch
+namespace Wrapper.Accpac.CashbookModule.NominalCashbookBatchServices
 {
     public class NominalCashbookBatchValidator : INominalCashbookBatchValidator
     {
@@ -26,13 +26,13 @@ namespace Wrapper.Accpac.CashbookModule.NominalCashbookBatch
             this.gLSetupValidator = gLSetupValidator;
         }
 
-        public async Task ValidateBatchAsync(IOperationContext context, NominalCashbookBatchEntryModel model)
+        public async Task ValidateBatchAsync(IOperationContext context, NominalCashbookBatch model)
         {
             var validator = new Validator();
             await ValidateBatchAsync(context, model, validator);
 
             int lineNo = 1;
-            foreach (CashbookBatchHeaderEntryModel header in model.Headers)
+            foreach (CashbookBatchHeader header in model.Headers)
             {
                 await commonServicesValidator.ValidateCurrencyExistsAsync(context, validator, header.Currency, lineNo);
 
@@ -47,7 +47,7 @@ namespace Wrapper.Accpac.CashbookModule.NominalCashbookBatch
                 lineNo++;
 
                 int detailLine = 0;
-                foreach (CashbookBatchEntryDetailModel detail in header.Details)
+                foreach (CashbookBatchDetail detail in header.Details)
                 {
 
                     detailLine++;
@@ -77,7 +77,7 @@ namespace Wrapper.Accpac.CashbookModule.NominalCashbookBatch
 
         }
 
-        private async Task ValidateBatchAsync(IOperationContext context, NominalCashbookBatchEntryModel model, Validator validator)
+        private async Task ValidateBatchAsync(IOperationContext context, Models.Accpac.CashbookModels.CashbookBatchModels.NominalCashbookBatchModels.NominalCashbookBatch model, Validator validator)
         {
             await cashbookSetupValidor.ValidateBankExistsAndIsActiveAsync(context, validator, model.BankCode, lineNo: null);
 

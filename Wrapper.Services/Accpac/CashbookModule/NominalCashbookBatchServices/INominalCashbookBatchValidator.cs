@@ -1,6 +1,6 @@
 ﻿using Wrapper.Models.Accpac.CashbookModels.CashbookBatchModels.NominalCashbookBatchModels;
 
-namespace Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatch
+namespace Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatchServices
 {
     /// <summary>
     /// Validates nominal cashbook batch entries, including batch headers, details, and associated data.
@@ -14,6 +14,6 @@ namespace Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatch
         /// <param name="model">The nominal cashbook batch entry model to validate.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
 
-        Task ValidateBatchAsync(IOperationContext context, NominalCashbookBatchEntryModel model);
+        Task ValidateBatchAsync(IOperationContext context, NominalCashbookBatch model);
     }
 }

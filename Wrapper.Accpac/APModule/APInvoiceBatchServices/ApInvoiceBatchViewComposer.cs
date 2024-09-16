@@ -2,11 +2,11 @@
 using Wrapper.Models.Accpac;
 using Wrapper.Models.Accpac.APModels.ApInvoiceBatchModels;
 using Wrapper.Services;
-using Wrapper.Services.Accpac.APModule;
+using Wrapper.Services.Accpac.APModule.APInvoiceBatchServices;
 
-namespace Wrapper.Accpac.APModule
+namespace Wrapper.Accpac.APModule.APInvoiceBatchServices
 {
-    public class ApInvoiceBatchViewComposer: IApInvoiceBatchViewComposer
+    public class ApInvoiceBatchViewComposer : IApInvoiceBatchViewComposer
     {
         public ApInvoiceBatchView BuildBatchView(IOperationContext context)
         {

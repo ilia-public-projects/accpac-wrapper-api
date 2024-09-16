@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents the header entry for a cashbook batch, including currency, entry details, and associated batch details.
     /// </summary>
-    public class CashbookBatchHeaderEntryModel
+    public class CashbookBatchHeader
     {
         /// <summary>
         /// Gets or sets the currency of the cashbook batch.
@@ -33,7 +33,7 @@
         /// <summary>
         /// Gets or sets the list of details associated with the cashbook batch entry.
         /// </summary>
-        public List<CashbookBatchEntryDetailModel> Details { get; set; }
+        public List<CashbookBatchDetail> Details { get; set; }
     }
 
 }

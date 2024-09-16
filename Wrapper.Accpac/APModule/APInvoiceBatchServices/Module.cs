@@ -9,7 +9,9 @@ namespace Wrapper.Accpac.APModule.APInvoiceBatchServices
         {
             services.AddSingleton<IAPInvoiceBatchEditor, APInvoiceBatchEditor>();
             services.AddSingleton<IAPInvoiceBatchValidator, APInvoiceBatchValidator>();
-            services.AddSingleton<IAPInvoiceBatchAccpacProcessor, APInvoiceBatchAccpacProcessor>();
+            services.AddSingleton<IApInvoiceBatchViewProcessor, ApInvoiceBatchViewProcessor>();
+
+            services.AddSingleton<ApInvoiceBatchInsertProcessor>();
         }
     }
 }

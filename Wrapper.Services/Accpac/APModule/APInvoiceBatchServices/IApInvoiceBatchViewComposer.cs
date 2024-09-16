@@ -1,6 +1,6 @@
 ﻿using Wrapper.Models.Accpac.APModels.ApInvoiceBatchModels;
 
-namespace Wrapper.Services.Accpac.APModule
+namespace Wrapper.Services.Accpac.APModule.APInvoiceBatchServices
 {
     /// <summary>
     /// Composes and provides access to the views required for handling Accounts Payable invoice batches.

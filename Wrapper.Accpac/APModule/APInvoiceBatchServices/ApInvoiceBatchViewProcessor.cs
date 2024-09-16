@@ -5,7 +5,7 @@ using Wrapper.Services.Accpac.APModule.APInvoiceBatchServices;
 
 namespace Wrapper.Accpac.APModule.APInvoiceBatchServices
 {
-    public class APInvoiceBatchAccpacProcessor: IAPInvoiceBatchAccpacProcessor
+    public class ApInvoiceBatchViewProcessor: IApInvoiceBatchViewProcessor
     {
         public void CreateBatch(IOperationContext context, ApInvoiceBatchView view, string batchName, DateTime batchDate)
         {
@@ -15,7 +15,7 @@ namespace Wrapper.Accpac.APModule.APInvoiceBatchServices
             view.BatchView.Update();
         }
 
-        public void CreateHeader(IOperationContext context, ApInvoiceBatchView view, ApInvoiceBatchHeaderEntryModel header)
+        public void CreateHeader(IOperationContext context, ApInvoiceBatchView view, ApInvoiceBatchHeader header)
         {
             // create header
             // process commands required to make sure, tax calculation error is not shown
@@ -40,7 +40,7 @@ namespace Wrapper.Accpac.APModule.APInvoiceBatchServices
             view.HeaderView.Process();
         }
 
-        public void CreateHeaderOptionalField(IOperationContext context, ApInvoiceBatchView view, ApInvoiceBatchHeaderEntryModel header)
+        public void CreateHeaderOptionalField(IOperationContext context, ApInvoiceBatchView view, ApInvoiceBatchHeader header)
         {
             // create header optional field
             view.HeaderOptFieldView.RecordCreate(tagViewRecordCreateEnum.VIEW_RECORD_CREATE_NOINSERT);
@@ -50,9 +50,9 @@ namespace Wrapper.Accpac.APModule.APInvoiceBatchServices
             view.HeaderOptFieldView.Insert();
         }
 
-        public void AddLinesToHeader(IOperationContext context, ApInvoiceBatchView view, ApInvoiceBatchHeaderEntryModel header)
+        public void AddLinesToHeader(IOperationContext context, ApInvoiceBatchView view, ApInvoiceBatchHeader header)
         {
-            foreach (ApInvoiceBatchDetailEntryModel detail in header.Details)
+            foreach (ApInvoiceBatchDetail detail in header.Details)
             {
                 view.DetailView.RecordCreate(tagViewRecordCreateEnum.VIEW_RECORD_CREATE_NOINSERT);
                 view.DetailView.Fields.FieldByName["TEXTDESC"].set_Value(detail.Description);

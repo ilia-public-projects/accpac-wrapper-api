@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Wrapper.Accpac.CashbookModule.ApCashbookBatchServices;
 using Wrapper.Accpac.CashbookModule.CashbookSetupServices;
-using Wrapper.Accpac.CashbookModule.NominalCashbookBatch;
+using Wrapper.Accpac.CashbookModule.NominalCashbookBatchServices;
 using Wrapper.Services.Accpac.CashbookModule;
 
 namespace Wrapper.Accpac.CashbookModule

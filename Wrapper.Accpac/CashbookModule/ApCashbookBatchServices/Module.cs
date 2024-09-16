@@ -7,9 +7,9 @@ namespace Wrapper.Accpac.CashbookModule.ApCashbookBatchServices
     {
         public static void AddApCashbookServices(this IServiceCollection services)
         {
-
             services.AddSingleton<IApCashbookBatchEditor, ApCashbookBatchEditor>();
             services.AddSingleton<IApCashbookBatchValidator, ApCashbookBatchValidator>();
+            services.AddSingleton<ApCashbookBatchInsertProcessor>();
         }
     }
 }

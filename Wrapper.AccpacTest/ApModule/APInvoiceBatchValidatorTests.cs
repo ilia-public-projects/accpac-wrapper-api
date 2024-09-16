@@ -43,21 +43,21 @@ namespace Wrapper.AccpacTest.ApModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new ApInvoiceBatchEntryModel
+            var model = new ApInvoiceBatch
             {
                 BatchDate = DateTime.UtcNow,
-                Headers = new List<ApInvoiceBatchHeaderEntryModel>
+                Headers = new List<ApInvoiceBatchHeader>
                 {
-                    new ApInvoiceBatchHeaderEntryModel
+                    new ApInvoiceBatchHeader
                     {
                         VendorId = "ValidVendor",
                         InvoiceDate = DateTime.UtcNow,
                         InvoiceNo = "Inv001",
                         TotalAmount = 1000.0m,
                         TransactionType = ApInvoiceBatchTransactionType.CreditNote,
-                        Details = new List<ApInvoiceBatchDetailEntryModel>
+                        Details = new List<ApInvoiceBatchDetail>
                         {
-                            new ApInvoiceBatchDetailEntryModel
+                            new ApInvoiceBatchDetail
                             {
                                 AccountId = "ValidAccount",
                                 Amount = 500.0m
@@ -95,10 +95,10 @@ namespace Wrapper.AccpacTest.ApModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new ApInvoiceBatchEntryModel
+            var model = new ApInvoiceBatch
             {
                 BatchDate = DateTime.UtcNow,
-                Headers = new List<ApInvoiceBatchHeaderEntryModel>()
+                Headers = new List<ApInvoiceBatchHeader>()
             };
 
             // Act
@@ -114,19 +114,19 @@ namespace Wrapper.AccpacTest.ApModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new ApInvoiceBatchEntryModel
+            var model = new ApInvoiceBatch
             {
                 BatchDate = DateTime.UtcNow,
-                Headers = new List<ApInvoiceBatchHeaderEntryModel>
+                Headers = new List<ApInvoiceBatchHeader>
                 {
-                    new ApInvoiceBatchHeaderEntryModel
+                    new ApInvoiceBatchHeader
                     {
                         VendorId = "ValidVendor",
                         InvoiceDate = DateTime.UtcNow,
                         InvoiceNo = "Inv001",
                         TotalAmount = 1000.0m,
                         TransactionType = ApInvoiceBatchTransactionType.CreditNote,
-                        Details = new List<ApInvoiceBatchDetailEntryModel>()
+                        Details = new List<ApInvoiceBatchDetail>()
                     }
                 }
             };
@@ -143,21 +143,21 @@ namespace Wrapper.AccpacTest.ApModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new ApInvoiceBatchEntryModel
+            var model = new ApInvoiceBatch
             {
                 BatchDate = DateTime.UtcNow,
-                Headers = new List<ApInvoiceBatchHeaderEntryModel>
+                Headers = new List<ApInvoiceBatchHeader>
                 {
-                    new ApInvoiceBatchHeaderEntryModel
+                    new ApInvoiceBatchHeader
                     {
                         VendorId = "InvalidVendor",
                         InvoiceDate = DateTime.UtcNow,
                         InvoiceNo = "Inv001",
                         TotalAmount = 1000.0m,
                         TransactionType = ApInvoiceBatchTransactionType.CreditNote,
-                        Details = new List<ApInvoiceBatchDetailEntryModel>
+                        Details = new List<ApInvoiceBatchDetail>
                         {
-                            new ApInvoiceBatchDetailEntryModel
+                            new ApInvoiceBatchDetail
                             {
                                 AccountId = "ValidAccount",
                                 Amount = 500.0m
@@ -182,21 +182,21 @@ namespace Wrapper.AccpacTest.ApModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new ApInvoiceBatchEntryModel
+            var model = new ApInvoiceBatch
             {
                 BatchDate = DateTime.UtcNow,
-                Headers = new List<ApInvoiceBatchHeaderEntryModel>
+                Headers = new List<ApInvoiceBatchHeader>
                 {
-                    new ApInvoiceBatchHeaderEntryModel
+                    new ApInvoiceBatchHeader
                     {
                         VendorId = "ValidVendor",
                         InvoiceDate = DateTime.UtcNow,
                         InvoiceNo = "Inv001",
                         TotalAmount = 1000.0m,
                         TransactionType = ApInvoiceBatchTransactionType.CreditNote,
-                        Details = new List<ApInvoiceBatchDetailEntryModel>
+                        Details = new List<ApInvoiceBatchDetail>
                         {
-                            new ApInvoiceBatchDetailEntryModel
+                            new ApInvoiceBatchDetail
                             {
                                 AccountId = "InvalidAccount",
                                 Amount = 500.0m
@@ -221,21 +221,21 @@ namespace Wrapper.AccpacTest.ApModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new ApInvoiceBatchEntryModel
+            var model = new ApInvoiceBatch
             {
                 BatchDate = DateTime.UtcNow,
-                Headers = new List<ApInvoiceBatchHeaderEntryModel>
+                Headers = new List<ApInvoiceBatchHeader>
                 {
-                    new ApInvoiceBatchHeaderEntryModel
+                    new ApInvoiceBatchHeader
                     {
                         VendorId = "ValidVendor",
                         InvoiceDate = DateTime.UtcNow,
                         InvoiceNo = "Inv001",
                         TotalAmount = -100.0m, // Invalid total amount
                         TransactionType = ApInvoiceBatchTransactionType.CreditNote,
-                        Details = new List<ApInvoiceBatchDetailEntryModel>
+                        Details = new List<ApInvoiceBatchDetail>
                         {
-                            new ApInvoiceBatchDetailEntryModel
+                            new ApInvoiceBatchDetail
                             {
                                 AccountId = "ValidAccount",
                                 Amount = 500.0m
@@ -257,21 +257,21 @@ namespace Wrapper.AccpacTest.ApModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new ApInvoiceBatchEntryModel
+            var model = new ApInvoiceBatch
             {
                 BatchDate = DateTime.UtcNow,
-                Headers = new List<ApInvoiceBatchHeaderEntryModel>
+                Headers = new List<ApInvoiceBatchHeader>
                 {
-                    new ApInvoiceBatchHeaderEntryModel
+                    new ApInvoiceBatchHeader
                     {
                         VendorId = "ValidVendor",
                         InvoiceDate = DateTime.UtcNow,
                         InvoiceNo = "Inv001",
                         TotalAmount = 1000.0m,
                         TransactionType = (ApInvoiceBatchTransactionType)999, // Invalid transaction type
-                        Details = new List<ApInvoiceBatchDetailEntryModel>
+                        Details = new List<ApInvoiceBatchDetail>
                         {
-                            new ApInvoiceBatchDetailEntryModel
+                            new ApInvoiceBatchDetail
                             {
                                 AccountId = "ValidAccount",
                                 Amount = 500.0m
@@ -293,21 +293,21 @@ namespace Wrapper.AccpacTest.ApModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new ApInvoiceBatchEntryModel
+            var model = new ApInvoiceBatch
             {
                 BatchDate = DateTime.UtcNow,
-                Headers = new List<ApInvoiceBatchHeaderEntryModel>
+                Headers = new List<ApInvoiceBatchHeader>
                 {
-                    new ApInvoiceBatchHeaderEntryModel
+                    new ApInvoiceBatchHeader
                     {
                         VendorId = "ValidVendor",
                         InvoiceDate = DateTime.UtcNow,
                         InvoiceNo = "Inv001",
                         TotalAmount = 1000.0m,
                         TransactionType = ApInvoiceBatchTransactionType.CreditNote,
-                        Details = new List<ApInvoiceBatchDetailEntryModel>
+                        Details = new List<ApInvoiceBatchDetail>
                         {
-                            new ApInvoiceBatchDetailEntryModel
+                            new ApInvoiceBatchDetail
                             {
                                 AccountId = "ValidAccount",
                                 Amount = -500.0m // Invalid amount
@@ -329,12 +329,12 @@ namespace Wrapper.AccpacTest.ApModule
         {
             // Arrange
             var context = Mock.Of<IOperationContext>();
-            var model = new ApInvoiceBatchEntryModel
+            var model = new ApInvoiceBatch
             {
                 BatchDate = DateTime.UtcNow,
-                Headers = new List<ApInvoiceBatchHeaderEntryModel>
+                Headers = new List<ApInvoiceBatchHeader>
                 {
-                    new ApInvoiceBatchHeaderEntryModel
+                    new ApInvoiceBatchHeader
                     {
                         VendorId = "ValidVendor",
                         InvoiceDate = DateTime.UtcNow,
@@ -342,9 +342,9 @@ namespace Wrapper.AccpacTest.ApModule
                         TotalAmount = 1000.0m,
                         TransactionType = ApInvoiceBatchTransactionType.CreditNote,
                         CreditCode = "InvalidCreditCode",
-                        Details = new List<ApInvoiceBatchDetailEntryModel>
+                        Details = new List<ApInvoiceBatchDetail>
                         {
-                            new ApInvoiceBatchDetailEntryModel
+                            new ApInvoiceBatchDetail
                             {
                                 AccountId = "ValidAccount",
                                 Amount = 500.0m

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Wrapper.Accpac.APModule.APInvoiceBatchServices;
 using Wrapper.Accpac.APModule.APSetupServices;
-using Wrapper.Services.Accpac.APModule;
+using Wrapper.Services.Accpac.APModule.APInvoiceBatchServices;
 
 namespace Wrapper.Accpac.APModule
 {

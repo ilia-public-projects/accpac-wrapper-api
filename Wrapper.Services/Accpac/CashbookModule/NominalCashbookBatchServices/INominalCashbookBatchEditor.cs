@@ -1,7 +1,7 @@
 ﻿using Wrapper.Models.Accpac.CashbookModels.CashbookBatchModels.NominalCashbookBatchModels;
 using Wrapper.Models.Common.Exceptions;
 
-namespace Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatch
+namespace Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatchServices
 {
     /// <summary>
     /// Handles the creation and processing of nominal cashbook batches
@@ -15,6 +15,6 @@ namespace Wrapper.Services.Accpac.CashbookModule.NominalCashbookBatch
         /// <param name="model">The nominal cashbook batch entry model to be created.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
         /// <exception cref="CreateEntityException">Thrown when an error occurs during the creation process.</exception>
-        Task CreateNominalCashbookBatchAsync(IOperationContext context, NominalCashbookBatchEntryModel model);
+        Task CreateNominalCashbookBatchAsync(IOperationContext context, NominalCashbookBatch model);
     }
 }

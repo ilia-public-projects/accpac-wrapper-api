@@ -30,13 +30,13 @@ namespace Wrapper.Accpac.CashbookModule.ApCashbookBatchServices
             this.apModuleSetupValidator = apModuleSetupValidator;
         }
 
-        public async Task ValidateBatchAsync(IOperationContext context, ApCashbookBatchEntryModel model)
+        public async Task ValidateBatchAsync(IOperationContext context, ApCashbookBatch model)
         {
             var validator = new Validator();
             await ValidateBatchAsync(context, model, validator);
 
             int lineNo = 1;
-            foreach (ApCashbookBatchHeaderEntryModel header in model.Headers)
+            foreach (ApCashbookBatchHeader header in model.Headers)
             {
                 await commonServicesValidator.ValidateCurrencyExistsAsync(context, validator, header.Currency, lineNo);
                 await apModuleSetupValidator.ValidateVendorExistsAndIsActiveAsync(context, validator, header.MiscCode, lineNo);
@@ -52,7 +52,7 @@ namespace Wrapper.Accpac.CashbookModule.ApCashbookBatchServices
                 lineNo++;
 
                 int detailLine = 0;
-                foreach (CashbookBatchEntryDetailModel detail in header.Details)
+                foreach (CashbookBatchDetail detail in header.Details)
                 {
 
                     detailLine++;
@@ -82,7 +82,7 @@ namespace Wrapper.Accpac.CashbookModule.ApCashbookBatchServices
 
         }
 
-        private async Task ValidateBatchAsync(IOperationContext context, ApCashbookBatchEntryModel model, Validator validator)
+        private async Task ValidateBatchAsync(IOperationContext context, ApCashbookBatch model, Validator validator)
         {
             await cashbookSetupValidor.ValidateBankExistsAndIsActiveAsync(context, validator, model.BankCode, lineNo: null);
 

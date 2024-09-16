@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a detailed entry for an Accounts Payable (AP) invoice batch, including account information, description, and amount.
     /// </summary>
-    public class ApInvoiceBatchDetailEntryModel
+    public class ApInvoiceBatchDetail
     {
         /// <summary>
         /// Gets or sets the account identifier associated with the AP invoice batch detail.

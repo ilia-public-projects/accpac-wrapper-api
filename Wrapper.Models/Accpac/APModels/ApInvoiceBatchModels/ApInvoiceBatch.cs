@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents an entry for an Accounts Payable (AP) invoice batch, including the batch name, batch date, and associated headers.
     /// </summary>
-    public class ApInvoiceBatchEntryModel
+    public class ApInvoiceBatch : IBatchModel<ApInvoiceBatchHeader>
     {
         /// <summary>
         /// Gets or sets the name of the AP invoice batch.
@@ -18,7 +18,7 @@
         /// <summary>
         /// Gets or sets the list of headers associated with the AP invoice batch entry.
         /// </summary>
-        public List<ApInvoiceBatchHeaderEntryModel> Headers { get; set; }
+        public List<ApInvoiceBatchHeader> Headers { get; set; }
     }
 
 }

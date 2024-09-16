@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents an entry for a cashbook batch, including the batch name and bank code.
     /// </summary>
-    public class CashbookBatchEntryModel
+    public class CashbookBatchBase
     {
         /// <summary>
         /// Gets or sets the name of the cashbook batch.
